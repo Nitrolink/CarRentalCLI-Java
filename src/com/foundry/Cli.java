@@ -12,7 +12,7 @@ public class Cli {
 
 
     public static void mainMenu(){
-        System.out.println("==========================================================================================================\nWelcome to Foundry Car Rental, input the number of the menu you would like to go to\n1: Rent a Car\n2: Return a Car\n3: Current Cart\n4: Exit Program");
+        System.out.println("==========================================================================================================\nWelcome to Foundry Car Rental, input the number of the menu you would like to go to\n1: Rent a Car\n2: Return a Car\n3: Current Cart\n4: Check Out\n5: Exit Program");
 
 
         switch (userInput()) {
@@ -23,7 +23,8 @@ public class Cli {
                 Customer.printCart();
                 mainMenu();
             }
-            case 4 -> Main.exit();
+            case 4 -> checkOutMenu();
+            case 5 -> Main.exit();
         }
 
     }
@@ -57,5 +58,17 @@ public class Cli {
             mainMenu();
         }
 
+    }
+
+    public static void checkOutMenu(){
+        System.out.println("==========================================================================================================\nYour Current Cart:");
+        Customer.printCart();
+        int totalCost = 0;
+        for (int i = 0; i < Customer.cart.size(); i++) {
+            Car curCar = Customer.cart.get(i);
+            totalCost += (curCar.price * curCar.days);
+        }
+        System.out.println("==========================================================================================================\nIt will cost you $" + totalCost + " To rent the car(s)");
+        Main.exit();
     }
 }
