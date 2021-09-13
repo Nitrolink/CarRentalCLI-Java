@@ -10,13 +10,13 @@ public class Car {
         this.name = name;
         this.company = company;
         this.price = price;
-        this.days = 0;
+        this.days = 1;
     }
 
 
     @Override
     public String toString(){
-        return company + " " + name + ", Cost: " + price;
+        return company + " " + name + ", Cost: " + price*days;
     }
 
     public void rent(int days){
