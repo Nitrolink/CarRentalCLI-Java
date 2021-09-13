@@ -1,0 +1,5 @@
+Camaro 2SS,Chevy,150
+Mustang GT,Ford,190
+Hellcat,Dodge,100
+CRV,Honda,50
+Wrangler,Jeep,130

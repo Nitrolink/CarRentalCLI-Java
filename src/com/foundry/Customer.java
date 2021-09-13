@@ -6,6 +6,8 @@ public class Customer {
     public static ArrayList<Car> cart = new ArrayList<>();
 
 
+
+
     public static void carReturn(Car car){
         car.rent(1);
         cart.remove(car);
