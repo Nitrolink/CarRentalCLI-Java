@@ -6,7 +6,7 @@ public class Car {
     public int price;
     public int days;
 
-    public Car(String name,String company,int price){
+    public Car(String company,String name,int price){
         this.name = name;
         this.company = company;
         this.price = price;

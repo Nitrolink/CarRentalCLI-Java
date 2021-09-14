@@ -4,15 +4,22 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
-    public static ArrayList<String[]> carRead = new ArrayList<>();
+    public static String customerData = "src/Data/CustomerDatabase.txt";
     public static String carData = "src/Data/CarDatabase.txt";
 
     public static void exit(){
         ArrayList<String> carWrite = new ArrayList<>();
+        ArrayList<String> customerWrite = new ArrayList<>();
         for (Car cars:Company.inventory) {
             carWrite.add(Company.carDeInit(cars));
         }
         writeFile(carData,carWrite);
+        for(Customer customers: Company.accounts){
+            customerWrite.add(Company.customerDeInit(customers));
+        }
+        writeFile(customerData,customerWrite);
+
+        System.exit(0);
     }
 
 
@@ -34,17 +41,16 @@ public class Main {
         }
     }
 
-    public static void readFile(String fileName){
+    public static void readFile(String fileName,ArrayList<String[]> storage){
         File file = new File(fileName);
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            int i = 0;
             String line;
             while((line = bufferedReader.readLine()) != null) {
                 String[] newLine = line.split(",");
 
-                carRead.add(newLine);
+                storage.add(newLine);
             }
 
             bufferedReader.close();
@@ -55,10 +61,26 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        readFile(carData);
-        for (String[] cars: carRead) {
+        ArrayList<String[]> carRead = new ArrayList<>();
+        ArrayList<String[]> customerRead = new ArrayList<>();
+        readFile(carData,carRead);
+        readFile(customerData, customerRead);
+        for(String[] cars: carRead) {
             Company.carInit(cars[0],cars[1],Integer.parseInt(cars[2]));
         }
-        Cli.mainMenu();
+
+        for (String[] customer: customerRead){
+            ArrayList<String[]> carList = new ArrayList<>();
+            if(customer.length > 3){
+                for (int i = 3; i < customer.length; i++) {
+                    carList.add( customer[i].split("-"));
+                }
+            }
+
+            Company.customerInit(customer[0],customer[1],Integer.parseInt(customer[2]),carList);
+        }
+
+        Company.printAccounts();
+        Cli.login();
     }
 }
