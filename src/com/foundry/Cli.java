@@ -56,12 +56,7 @@ public class Cli {
                     checkOutMenu();
                     mainMenu(false);
                 }
-                case 5 -> {
-                    for (Car car:customer.cart) {
-                        Customer.carReturn(car);
-                    }
-                    Main.exit();
-                }
+                case 5 -> Main.exit();
             }
         }
         else{
@@ -90,12 +85,8 @@ public class Cli {
                     adminMenu();
                     mainMenu(true);
                 }
-                case 6 -> {
-                    for (Car car:customer.cart) {
-                        Customer.carReturn(car);
-                    }
-                    Main.exit();
-                }
+                case 6 -> Main.exit();
+                
             }
         }
 
