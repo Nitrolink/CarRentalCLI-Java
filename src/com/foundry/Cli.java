@@ -49,7 +49,7 @@ public class Cli {
                 }
                 case 3 -> {
                     System.out.println("==========================================================================================================\nYour Current Cart:");
-                    Customer.printCart();
+                    customer.printCart();
                     mainMenu(false);
                 }
                 case 4 -> {
@@ -74,7 +74,7 @@ public class Cli {
                 }
                 case 3 -> {
                     System.out.println("==========================================================================================================\nYour Current Cart:");
-                    Customer.printCart();
+                    customer.printCart();
                     mainMenu(true);
                 }
                 case 4 -> {
@@ -86,7 +86,7 @@ public class Cli {
                     mainMenu(true);
                 }
                 case 6 -> Main.exit();
-                
+
             }
         }
 
@@ -220,22 +220,22 @@ public class Cli {
         if (answer <= Company.inventory.size() && answer > 0) {
             System.out.println("==========================================================================================================\nHow many days would you like to rent?");
             int days = userInput();
-            Customer.carRent(Company.inventory.get(answer - 1), days);
+            customer.carRent(Company.inventory.get(answer - 1), days);
         }
     }
 
     public static void returnMenu(){
             System.out.println("==========================================================================================================\nWhich Car would you like to return?");
-            Customer.printCart();
+            customer.printCart();
             int answer = userInput();
             if (answer <= customer.cart.size() && answer > 0) {
-                Customer.carReturn(customer.cart.get(answer - 1));
+                customer.carReturn(customer.cart.get(answer - 1));
             }
     }
 
     public static void checkOutMenu(){
         System.out.println("==========================================================================================================\nYour Current Cart:");
-        Customer.printCart();
+        customer.printCart();
         int totalCost = 0;
         for (int i = 0; i < customer.cart.size(); i++) {
             Car curCar = customer.cart.get(i);
@@ -256,7 +256,7 @@ public class Cli {
             else{
                 System.out.println("==========================================================================================================\nInsufficient Funds");
                 for (Car car:customer.cart) {
-                    Customer.carReturn(car);
+                    customer.carReturn(car);
                 }
             }
         }

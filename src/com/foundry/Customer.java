@@ -21,21 +21,21 @@ public class Customer {
         return id + ": " + firstName +  " $" + balance;
     }
 
-    public static void carReturn(Car car){
+    public void carReturn(Car car){
         car.rent(1);
         Cli.customer.cart.remove(car);
         Company.inventory.add(car);
     }
 
 
-    public static void carRent(Car car,int days) {
+    public void carRent(Car car,int days) {
         car.rent(days);
         Cli.customer.cart.add(car);
         Company.inventory.remove(car);
         System.out.println("==========================================================================================================\nIt will cost $" + (days * car.price) + " to rent the " + car.company + " " + car.name + " for " + days + " days." );
     }
 
-    public static void printCart() {
+    public void printCart() {
         for (int i = 0; i < Cli.customer.cart.size(); i++) {
             System.out.println((i + 1) + ": " + Cli.customer.cart.get(i));
         }
