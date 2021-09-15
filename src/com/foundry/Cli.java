@@ -53,7 +53,9 @@ public class Cli {
                     mainMenu(false);
                 }
                 case 4 -> {
-                    checkOutMenu();
+                    if(customer.cart.size() > 0) {
+                        checkOutMenu();
+                    }
                     mainMenu(false);
                 }
                 case 5 -> Main.exit();
@@ -78,7 +80,9 @@ public class Cli {
                     mainMenu(true);
                 }
                 case 4 -> {
-                    checkOutMenu();
+                    if(customer.cart.size() > 0) {
+                        checkOutMenu();
+                    }
                     mainMenu(true);
                 }
                 case 5 -> {
@@ -107,7 +111,7 @@ public class Cli {
                             String name = myObj.nextLine();
                             System.out.println("==========================================================================================================\nEnter the Price");
                             int price = myObj.nextInt();
-                            Company.inventory.add(new Car(company,name,price));
+                            Company.inventory.add(new Car(company,name,price,0));
                             mainMenu(true);
                         }
                         case 2 -> {
@@ -250,7 +254,7 @@ public class Cli {
             if(customer.balance >= totalCost){
                 customer.balance -= totalCost;
                 System.out.println("==========================================================================================================\nYour new Balance: ");
-                System.out.println("$" +customer.balance);
+                System.out.println("$" + customer.balance);
                 Main.exit();
             }
             else{

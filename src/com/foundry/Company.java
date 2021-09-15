@@ -11,11 +11,12 @@ public class Company {
     public static void customerInit(String firstName, String id, int balance,ArrayList<String[]> cars) {
         ArrayList<Car> list = new ArrayList<>();
         for (String[] car : cars) {
-            list.add(new Car(car[0],car[1],Integer.parseInt(car[2])));
+            list.add(new Car(car[0],car[1],Integer.parseInt(car[2]),Integer.parseInt(car[3])));
         }
 
         accounts.add(new Customer(firstName, id, balance,list));
     }
+
     public static String customerDeInit(Customer customer) {
 
         StringBuilder cars = new StringBuilder();
@@ -32,7 +33,7 @@ public class Company {
     }
 
     public static void carInit(String company, String name, int price) {
-        inventory.add(new Car(company, name, price));
+        inventory.add(new Car(company, name, price,0));
     }
 
     public static String carDeInit(Car car){

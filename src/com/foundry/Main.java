@@ -25,7 +25,6 @@ public class Main {
 
 
     public static void writeFile(String fileName,ArrayList<String> list){
-
         try {
             File file = new File(fileName);
             FileWriter fileReader = new FileWriter(file); // A stream that connects to the text file
